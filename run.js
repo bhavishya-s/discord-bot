@@ -1,4 +1,4 @@
-const blacklist = require("./blacklist.js");
+const config = require("./config.json");
 const discordjs = require('discord.js');    
 
 const discordClient = new discordjs.Client();
@@ -15,11 +15,7 @@ discordClient.on('message', msg => {
     else if(msg.content.match(/^!praise\s*<@!\w*>$/))
     {
         list = msg.content.split(" ");
-        // if(list[1])){
-        //     msg.channel.send(`${list[1]}, you're just shit!`);
-        // }
-        // else
-            msg.channel.send(`${list[1]}, you're doing great!`);
+        msg.channel.send(`${list[1]}, you're doing great!`);
     }
     else if(msg.content.match(/^!praise\s*<@!\w*>\s*\".*\"$/)){
         message = msg.content.match(/\".*\"/);
@@ -31,4 +27,4 @@ discordClient.on('message', msg => {
     }
 })
 
-discordClient.login('NzYyOTEwNTg0MjM2NjcwOTg3.X3wB2Q.evwXV7wyMry385KIrzlOyHlrmoU');
+discordClient.login(config.token);
